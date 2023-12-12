@@ -7,7 +7,7 @@ class ProductQuerySet(_managers.ProductQuerySet):
         return self
 
 
-class ProductManager(_managers.ProductManager):
-
-    def get_queryset(self):
-        return ProductQuerySet(self.model, using=self._db)
+#class ProductManager(_managers.ProductQuerySet.as_manager()):
+#
+#    def get_queryset(self):
+#        return ProductQuerySet(self.model, using=self._db)
