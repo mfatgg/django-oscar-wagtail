@@ -23,7 +23,7 @@ def pytest_configure(config):
 
 def pytest_runtest_setup(item):
     # Patch django-factoryboy since we don't allow db access
-    if not item.get_marker('django_db'):
+    if not item.get_closest_marker('django_db'):
         next_seq_mock = mock.Mock()
         next_seq_mock.return_value = 1
 
