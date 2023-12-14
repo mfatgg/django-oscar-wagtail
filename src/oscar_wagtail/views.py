@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.utils.six import text_type
 from oscar.core.loading import get_model
-from wagtail.admin.forms import SearchForm
+from wagtail.admin.forms.search import SearchForm
 from wagtail.admin.modal_workflow import render_modal_workflow
 
 Product = get_model('catalogue', 'Product')
@@ -49,10 +49,13 @@ def product_choose(request):
     return render_modal_workflow(
         request,
         'oscar_wagtail/chooser/product_choose.html',
-        'oscar_wagtail/chooser/product_choose.js',
-        {
+        None,  # Deprecated argument (still required in Wagtail 2.4)
+        template_vars={
             'items': paginated_items,
             'searchform': searchform,
+        },
+        json_data={
+            'step': 'show_product_chooser',
         }
     )
 

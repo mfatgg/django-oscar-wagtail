@@ -26,6 +26,18 @@ class AbstractCategory(Page):
         PublishingPanel(),
     ]
 
+    is_public = models.BooleanField(
+        _('Is public'),
+        default=True,
+        db_index=True,
+        help_text=_("Show this category in search results and catalogue listings."))
+
+    ancestors_are_public = models.BooleanField(
+        _('Ancestor categories are public'),
+        default=True,
+        db_index=True,
+        help_text=_("The ancestors of this category are public"))
+
     class Meta:
         abstract = True
 

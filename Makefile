@@ -9,6 +9,7 @@ lint:
 
 clean:
 	find . -name '*.pyc' -delete
+	find . -name '.pytest_cache' -print0|xargs -0 rm -rf
 
 test:
 	py.test -vvv
